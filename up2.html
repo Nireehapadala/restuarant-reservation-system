@@ -1,0 +1,401 @@
+
+<html>
+
+<head>
+    
+    <title>Restaurant Reservation System</title>
+    <style>
+        body {
+            font-family: lucida;
+            background-image: url("https://img.freepik.com/premium-vector/mobile-booking-reservation-table-restaurant-woman-chooses-cafe-online-waiter-sets-table-huge-smartphone-tiny-people-online-menu-food-application-vector-concept_176411-5518.jpg?w=1060");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            color:black;
+            backdrop-filter: blur(4px);
+            backdrop-filter: brightness(85%);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .menu-item {
+            margin-bottom: 10px;
+        }
+
+        .input {
+            
+            background-color: rgba(255, 255, 255, 0.5); /* Pink with 50% transparency */
+            width: 600px;
+            margin: 80px auto;
+            padding: 30px;
+            border: 4px double #0c0606dd;
+            
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+        #summary-section {
+            border-top: 2px solid #ccc;
+            margin-top: 20px;
+            padding-top: 10px;
+        }
+
+        .navbar {
+            background-color: black;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 13px;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">🍽️ Activate Tables</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="up2.html">Home</a></li>
+            
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Reservation Section -->
+    <div id="reservation-section" class="input">
+        <h1 style="color:rgb(151, 18, 18);text-align: center; font-size:42px;">Activate Tables</h1>
+        <h2>Table Reservation</h2>
+        <form id="reservation-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required placeholder="Enter your name"><br><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" required placeholder="Enter your mobile number"><br><br>
+
+            <label for="table-preference">Table Preference:</label>
+            <select id="table-preference">
+                <option value="Indoor">Indoor</option>
+                <option value="Outdoor">Outdoor</option>
+                <option value="Window">Window</option>
+            </select><br><br>
+
+            <label for="members">Number of Members:</label>
+            <input type="number" id="members" required placeholder="Number of people"><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required placeholder="Enter your email"><br><br>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" required><br><br>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" required><br><br>
+
+            <button type="submit">Reserve Table</button>
+        </form>
+    </div>
+
+    <!-- Restaurant Selection (Initially Hidden) -->
+    <div id="restaurant-selection" class="input hidden">
+        <h2 style="color:rgb(154, 12, 12);">Select a Restaurant</h2>
+        <select id="restaurant-list">
+            <option value="">-- Select a Restaurant --</option>
+            <option value="Krigo">Krigo</option>
+            <option value="The Vintage">The Vintage</option>
+            <option value="Spice Paradise">Spice Paradise</option>
+            <option value="Eat Green">Eat Green</option>
+            <option value="Cinnamon">Cinnamon</option>
+            <option value="Sangrilla">Sangrilla</option>
+            <option value="The Art Kitchen">The Art Kitchen</option>
+        </select>
+        <button id="select-restaurant">Select</button>
+    </div>
+
+    <!-- Menu Section -->
+    <div id="menu-section" class="input hidden">
+        <h2 style="color:rgb(154, 12, 12);">Menu</h2>
+        <p><strong>Selected Restaurant:</strong> <span id="selected-restaurant"></span></p>
+        <form id="menu-form">
+            <div id="menu-items"></div>
+            <button type="submit">Order Food</button>
+        </form>
+    </div>
+
+    <!-- Summary Section -->
+    <div id="summary-section" class="input hidden">
+        <h2 style="color:rgb(154, 12, 12);">Your Reservation and Order Summary</h2>
+        <p><strong>Restaurant:</strong> <span id="summary-restaurant"></span></p>
+        <p><strong>Name:</strong> <span id="summary-name"></span></p>
+        <p><strong>Phone Number:</strong> <span id="summary-phone"></span></p>
+        <p><strong>Table Preference:</strong> <span id="summary-table-preference"></span></p>
+        <p><strong>Members:</strong> <span id="summary-members"></span></p>
+        <p><strong>Email:</strong> <span id="summary-email"></span></p>
+        <p><strong>Date:</strong> <span id="summary-date"></span></p>
+        <p><strong>Time:</strong> <span id="summary-time"></span></p>
+        <p><strong>Ordered Items:</strong> <span id="summary-items"></span></p>
+        <p><strong>Total Price:</strong> <span id="summary-price"></span></p>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Restaurant. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const reservationForm = document.getElementById("reservation-form");
+        const restaurantSelection = document.getElementById("restaurant-selection");
+        const selectRestaurantButton = document.getElementById("select-restaurant");
+        const menuSection = document.getElementById("menu-section");
+        const menuForm = document.getElementById("menu-form");
+        const summarySection = document.getElementById("summary-section");
+
+        let reservationData = {};
+
+        // Handle reservation submission
+        reservationForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            reservationData.name = document.getElementById("name").value;
+            reservationData.phone = document.getElementById("phone").value;
+            reservationData.tablePreference = document.getElementById("table-preference").value;
+            reservationData.members = document.getElementById("members").value;
+            reservationData.email = document.getElementById("email").value;
+            reservationData.date = document.getElementById("date").value;
+            reservationData.time = document.getElementById("time").value;
+
+            alert(`Table reserved successfully for ${reservationData.name}!`);
+
+            // Hide reservation and show restaurant selection
+            document.getElementById("reservation-section").classList.add("hidden");
+            restaurantSelection.classList.remove("hidden");
+        });
+
+        // Handle restaurant selection
+        selectRestaurantButton.addEventListener("click", function () {
+            const selectedRestaurant = document.getElementById("restaurant-list").value;
+            if (selectedRestaurant) {
+                reservationData.restaurant = selectedRestaurant;
+                document.getElementById("selected-restaurant").textContent = selectedRestaurant;
+                loadMenu(selectedRestaurant);
+                restaurantSelection.classList.add("hidden");
+                menuSection.classList.remove("hidden");
+            } else {
+                alert("Please select a restaurant.");
+            }
+        });
+
+        // Load menu items with quantity
+        function loadMenu(restaurant) {
+            const menuItemsContainer = document.getElementById("menu-items");
+            menuItemsContainer.innerHTML = "";
+
+            const menuData = {
+                "Krigo": [
+                { name: "Pizza", price: 199 },
+                { name: "Pasta", price: 130 },
+                { name: "Lasagna", price: 299 },
+                { name: "Burger", price: 299 },
+                { name: "Steak", price: 150 },
+                { name: "Fries", price: 99 },
+                { name: "Salad", price: 79 },
+                { name: "Smoothie", price: 170 },
+                { name: "Vegan Wrap", price: 130 }
+            ],
+            "The Vintage": [
+               
+                { name: "Dum Biryani", price: 150 },
+                { name: "Fry Biryani", price: 200 },
+                { name: "Lollipop Biryani (3 pc)", price: 250 },
+                { name: "Wings Biryani (3 pc)", price: 250 },
+                { name: "Joint Biryani (3 pc)", price: 250 },
+                { name: "Boneless Biryani (3 pc)", price: 280 },
+                { name: "Tandoori Chicken Biryani ", price: 350 },
+                { name: "Tandoori Tikka Biryani", price: 300 },
+                { name: "Prawns Fry Biryani", price: 280 },
+                { name: "Prawns curry Biryani", price: 280 },
+                { name: "Mutton curry Biryani", price: 380 },
+                { name: "Prawns fry Biryani", price: 380 },
+                { name: "Egg Biryani", price: 280 },
+                { name: "Kaju Biryani", price: 200 },
+                { name: "Paneer Biryani", price: 200 },
+                { name: "Veg mixed Biryani", price: 180 }
+
+            ],
+            "Spice Paradise": [
+            { name: "Chilli Paneer", price: 220 },
+                { name: "Paneer 65", price: 200 },
+                { name: "Paneer 555", price: 200 },
+                { name: "Mushroom 65", price: 200 },
+                { name: "Chilli Mushroom", price: 220 },
+                { name: "Chicken 65", price: 220 },
+                { name: "Chicken 555", price: 220 },
+                { name: "Lemon Chicken", price: 200 },
+                { name: "Dragon Chicken", price: 280 },
+                { name: "Pepper Chicken", price: 220 },
+                { name: "Garlic Chicken", price: 200 },
+                { name: "Chicken Majestic", price: 250 },
+                { name: "Chicken Wings", price: 290 },
+                { name: "Chilly prawn", price: 250 },
+                { name: "Prawn 65", price: 250 },
+                { name: "Pepper prawn", price: 260 },
+                { name: "Prawn Manchuria", price: 250 }
+
+            ],
+            "Eat Green": [
+                { name: "chicken tikka kabab", price:243 },
+                { name: "tandoori chicken(half)", price: 243 },
+                { name: "tandoori chicken(full)", price: 379 },
+                { name: "chicken reshmi kebab", price:243 },
+                { name: "chicken garlic kabab", price:243 },
+                { name: "butter chicken boneless", price:246 },
+                { name: "nizami handi", price:171 },
+                { name: "tandoori roti", price:40 },
+                { name: "rumali roti", price:40 }
+            ],
+            "Cinnamon": [
+                { name: "chicken biryani", price: 210 },
+                { name: "mutton biryani", price:253 },
+                { name: "mutton family pack", price:576 },
+                { name: "chicken family pack", price:552 },
+                { name: "special chicken biryani", price:337 },
+                { name: "special mutton biryani", price:351},
+                { name: "supreme chicken biryani", price:784 },
+                { name: "supreme mutton biryani", price:819 },
+                { name: "egg biryani", price:154 },
+                { name: "veg. biryani", price:154 },
+                { name: "veg. family pack", price:383 },
+                { name: "veg. suprema pack", price:574 }
+            ],
+            "Sangrilla": [
+                { name: "cheeseburger", price: 100 },
+                { name: "veg burger", price:100 },
+                { name: "chowmein", price: 120 },
+                { name: "chowmein plan", price: 12 },
+                { name: "paneer rice", price: 120 },
+                { name: "veg spring roll", price: 90 },
+                { name: "momos", price: 100 },
+                { name: "fried rice", price: 120 },
+                { name: "chilli potato", price: 100 },
+                { name: "chicken momos", price: 150 },
+                { name: "chicken rice", price: 150 },
+                { name: "manchuria", price: 120 },
+
+            ],
+            "The Art Kitchen": [
+                { name: "black decker(chocolate)", price: 110 },
+                { name: "blue dot(black current)", price: 110 },
+                { name: "butterscotch(milk shake)", price: 110 },
+                { name: "figaro(angir badam)", price: 110 },
+                { name: "dry fruit twist(dry fruit)", price: 110 },
+                { name: "lichee shake(lichee)", price: 110 },
+                { name: "beilgium milk shake(BOC)", price: 120 },
+                { name: "custom(your choice)", price: 120 }
+            ]
+
+        };
+
+            menuData[restaurant].forEach(item => {
+                const div = document.createElement("div");
+                div.classList.add("menu-item");
+                div.innerHTML = `
+                    <input type="checkbox" value="${item.name}" data-price="${item.price}">
+                    <label>${item.name} (${item.price})</label>
+                    <input type="number" value="1" min="1" class="quantity" data-item="${item.name}">
+                `;
+                menuItemsContainer.appendChild(div);
+            });
+        }
+
+        // Handle menu submission
+        menuForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const selectedItems = Array.from(document.querySelectorAll("#menu-form input:checked"));
+            if (selectedItems.length > 0) {
+                reservationData.items = [];
+                reservationData.totalPrice = 0;
+
+                selectedItems.forEach(item => {
+                    const quantityInput = document.querySelector(`.quantity[data-item="${item.value}"]`);
+                    const quantity = parseInt(quantityInput.value);
+                    const price = parseFloat(item.dataset.price);
+                    reservationData.items.push(`${item.value} x ${quantity}`);
+                    reservationData.totalPrice += price * quantity;
+                });
+
+                showSummary();
+            } else {
+                alert("Please select at least one item.");
+            }
+        });
+
+        // Display summary
+        function showSummary() {
+            document.getElementById("summary-restaurant").textContent = reservationData.restaurant;
+            document.getElementById("summary-name").textContent = reservationData.name;
+            document.getElementById("summary-phone").textContent = reservationData.phone;
+            document.getElementById("summary-table-preference").textContent = reservationData.tablePreference;
+            document.getElementById("summary-members").textContent = reservationData.members;
+            document.getElementById("summary-email").textContent = reservationData.email;
+            document.getElementById("summary-date").textContent = reservationData.date;
+            document.getElementById("summary-time").textContent = reservationData.time;
+            document.getElementById("summary-items").textContent = reservationData.items.join(", ");
+            document.getElementById("summary-price").textContent = reservationData.totalPrice.toFixed(2);
+
+            menuSection.classList.add("hidden");
+            summarySection.classList.remove("hidden");
+        }
+    </script>
+</body>
+
+</html>

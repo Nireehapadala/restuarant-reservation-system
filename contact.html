@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Activate Tables</title>
+    <style>
+        body {
+            font-family: lucida;
+            
+            background-image: url("https://img.freepik.com/premium-vector/mobile-booking-reservation-table-restaurant-woman-chooses-cafe-online-waiter-sets-table-huge-smartphone-tiny-people-online-menu-food-application-vector-concept_176411-5518.jpg?w=1060");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            color: black;
+            backdrop-filter: blur(4px);
+            backdrop-filter: brightness(85%);
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color:transparent;
+            border-radius: 10px;
+            color:black
+        }
+        h1, h2, h3 {
+            text-align: center;
+            color:black;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 18px;
+            color: black;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 1px solid;
+            color:black;
+            border-color: transparent;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #c0392b;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button:hover {
+            background-color: #e74c3c;
+        }
+        .navbar {
+            background-color: black;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav-links li {
+            margin: 0 15px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background-color:whitesmoke;
+            color: white;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">🍽️ Activate Tables</div>
+        <ul class="nav-links">
+            <li><a href="up2.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contact Us Section -->
+    <div class="container">
+        <h1>Contact <span style="color: #c0392b;">Activate Tables</span></h1>
+        <p>Have questions or need assistance? We're here to help! Feel free to get in touch with us using the contact form below or reach out through our provided contact details.</p>
+
+        <h2>Get In Touch</h2>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="6" required placeholder="Write your message..."></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <!-- Contact Details Section -->
+    <div class="container">
+        <h2>Our Contact Details</h2>
+        <p><strong>📧 Email:</strong> support@activatetables.com</p>
+        <p><strong>📞 Phone:</strong> +91 98765 43210</p>
+        <p><strong>🏢 Address:</strong> 123, Food Street, MG Road, Hyderabad, India</p>
+        <h3>Operating Hours</h3>
+        <p><strong>Monday - Friday:</strong> 10:00 AM - 10:00 PM</p>
+        <p><strong>Saturday - Sunday:</strong> 11:00 AM - 11:00 PM</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Activate Tables. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const message = document.getElementById("message").value;
+
+            if (name && email && phone && message) {
+                alert(`Thank you, ${name}! Your message has been received. We'll get back to you soon.`);
+                document.getElementById("contact-form").reset();
+            } else {
+                alert("Please fill out all fields before submitting.");
+            }
+        });
+    </script>
+
+</body>
+</html>
