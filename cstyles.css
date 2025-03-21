@@ -1,0 +1,97 @@
+body {
+    font-family: lucida;
+    
+    background-image: url("https://img.freepik.com/premium-vector/mobile-booking-reservation-table-restaurant-woman-chooses-cafe-online-waiter-sets-table-huge-smartphone-tiny-people-online-menu-food-application-vector-concept_176411-5518.jpg?w=1060");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    color: black;
+    backdrop-filter: blur(4px);
+    backdrop-filter: brightness(85%);
+}
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color:transparent;
+    border-radius: 10px;
+    color:black
+}
+h1, h2, h3 {
+    text-align: center;
+    color:black;
+}
+p {
+    line-height: 1.6;
+    font-size: 18px;
+    color: black;
+}
+form {
+    margin-top: 20px;
+}
+label {
+    font-weight: bold;
+}
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border: 1px solid;
+    color:black;
+    border-color: transparent;
+    border-radius: 5px;
+}
+button {
+    background-color: #c0392b;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+button:hover {
+    background-color: #e74c3c;
+}
+.navbar {
+    background-color: black;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.nav-links li {
+    margin: 0 15px;
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+.nav-links a:hover {
+    text-decoration: underline;
+}
+.footer {
+    background-color:whitesmoke;
+    color: white;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    
+    font-size: 14px;
+}
